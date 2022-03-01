@@ -1,0 +1,13 @@
+{
+	"type": "code",
+	"modid": "discordrelay",
+	"name": "Discord Relay",
+	"description": "Bridges Vintage Story and a Discord channel",
+	"authors": ["Derpius"],
+	"version": "0.1.0",
+	"dependencies": { 
+	  "game": "1.16.4"
+	},
+	"website": "https://www.taservers.com"
+  }
+  
