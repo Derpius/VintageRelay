@@ -25,15 +25,6 @@ namespace SourceDedicatedServer
 		A2S_RULES = 0x45
 	}
 
-	public class StateObject
-	{
-		public const int bufferSize = 1400;
-
-		public byte[] buffer = new byte[bufferSize];
-
-		public Socket workSocket = null;
-	}
-	
 	public static class ServerEmulator
 	{
 		private static ICoreServerAPI API;
