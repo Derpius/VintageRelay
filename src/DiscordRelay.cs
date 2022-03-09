@@ -176,9 +176,16 @@ namespace DiscordRelay
 
 			toPost.Add(key.ToString(), JsonConvert.SerializeObject(payload, Formatting.None));
 		}
-		
+
+		public override bool ShouldLoad(EnumAppSide side)
+        {
+            return side == EnumAppSide.Server;
+        }
+
 		public override void StartServerSide(ICoreServerAPI api)
 		{
+			base.StartServerSide(api);
+
 			API = api;
 			SourceDedicatedServer.ServerEmulator.StartListening(api);
 
@@ -187,6 +194,16 @@ namespace DiscordRelay
 			api.Event.PlayerJoin += OnPlayerJoin;
 			api.Event.PlayerDisconnect += OnPlayerLeave;
 			api.Event.PlayerDeath += OnPlayerDeath;
+
+			api.RegisterCommand(
+				"relay_connection",
+				"Sets the connection string to use when making requests to the relay",
+				"[constring]",
+				(IServerPlayer player, int groupId, CmdArgs args) => {
+					relayConnection = "http://" + args.PopWord("localhost:8080");
+				},
+				Privilege.controlserver
+			);
 		}
 
 		static void OnTick(float deltaTime)
