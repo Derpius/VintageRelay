@@ -8,6 +8,7 @@
 	"dependencies": { 
 	  "game": "1.16.4"
 	},
-	"website": "https://github.com/Derpius/VintageRelay"
+	"website": "https://github.com/Derpius/VintageRelay",
+	"side": "Server"
   }
   
